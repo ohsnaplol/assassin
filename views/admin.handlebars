@@ -1,0 +1,32 @@
+<h1>Assassin Manager</h1>
+<div>
+  <h2>Current Objects</h2>
+  <table>
+    <tr>
+      <th>Player</th>
+      <th>Weapon</th> 
+      <th>Target</th>
+    </tr>
+    {{#each objective}}
+      <tr>{{player.name}}</tr>
+      <tr>{{player.weapon}}</tr>
+      <tr>{{player.target}}</tr>
+    {{/each}}
+  </table>
+</div>
+
+<div>
+  <h2>Kill Feed</h2>
+  <table>
+    <tr>
+      <th>Player</th>
+      <th>Weapon</th> 
+      <th>Target</th>
+    </tr>
+    {{#each events}}
+      <tr>{{player.name}}</tr>
+      <tr>{{player.weapon}}</tr>
+      <tr>{{player.target}}</tr>
+    {{/each}}
+  </table>
+</div>
