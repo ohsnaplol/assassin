@@ -1,3 +1,46 @@
 body {
   background-color: lavenderblush;
 }
+
+button{
+	margin-top: 25%;
+	margin-left: 22%;
+}
+
+h1{
+	text-align: center;
+	margin-top: 1%;
+	font-size: 300%;
+	margin-right: 2.5%;
+
+}
+
+h2{
+	text-align: center;
+
+}
+
+form{
+	margin-left: 40%;
+	margin-top: 15%;
+}
+
+.btn-primary{
+	margin-left: 30%;
+}
+
+label{
+	text-align: center;
+}
+
+h3{
+	margin-left: 40%;
+}
+
+h4{
+	margin-left: 45%;
+}
+
+
+
+
