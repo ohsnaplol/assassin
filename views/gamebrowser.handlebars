@@ -1,0 +1,22 @@
+<h1>Game Browser</h1>
+
+<div>
+  <button>Create Game</button>
+</div>
+
+<div>
+  <table>
+    <tr>
+      <th>Game Name</th>
+      <th>Location</th> 
+      <th>Participants</th>
+    </tr>
+    {{#each game}}
+      <a>
+        <tr>{{game.name}}</tr>
+        <tr>{{game.location}}</tr>
+        <tr>{{game.participants}}</tr>
+      </a>
+    {{/each}}
+  </table>
+</div>
