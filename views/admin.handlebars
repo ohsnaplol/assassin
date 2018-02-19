@@ -1,11 +1,11 @@
-<h1>Assassin Manager</h1>
+<h2>Assassin Manager</h2>
 <div>
-  <h2>Current Objects</h2>
-  <table>
+  <h3>Current Objectives</h3>
+  <table class="table">
     <tr>
-      <th>Player</th>
-      <th>Weapon</th> 
-      <th>Target</th>
+      <th scope="col">Player</th>
+      <th scope="col">Weapon</th> 
+      <th scope="col">Target</th>
     </tr>
     {{#each objective}}
       <tr>{{player.name}}</tr>
@@ -16,12 +16,12 @@
 </div>
 
 <div>
-  <h2>Kill Feed</h2>
-  <table>
+  <h3>Kill Feed</h3>
+  <table class="table">
     <tr>
-      <th>Player</th>
-      <th>Weapon</th> 
-      <th>Target</th>
+      <th scope="col">Player</th>
+      <th scope="col">Weapon</th> 
+      <th scope="col">Target</th>
     </tr>
     {{#each events}}
       <tr>{{player.name}}</tr>
