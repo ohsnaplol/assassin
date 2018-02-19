@@ -9,11 +9,13 @@ app.use(bodyParser.json());
 app.use(express.static('public'))
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-  
+
+var db = require("./models");
 var routes = require("./controllers/assassin_controller.js");
 app.use("/", routes);
 
-app.listen(PORT, function() {
-  console.log(`Listening on port ${PORT}`)
-})
-    
+// db.sequelize.sync({force: true}).then(function() {
+  app.listen(PORT, function() {
+    console.log(`Listening on port ${PORT}`)
+  })
+// }) 
