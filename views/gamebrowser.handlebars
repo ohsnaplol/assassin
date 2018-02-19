@@ -1,15 +1,18 @@
-<h1>Game Browser</h1>
-
-<div>
-  <button>Create Game</button>
+<div class="row">
+  <div class="col-md-9">
+    <h2>Game Browser</h2>
+  </div>
+  <div class="col-md-3">
+    <button class="btn btn-primary">Create Game</button>
+  </div>
 </div>
 
 <div>
-  <table>
+  <table class="table">
     <tr>
-      <th>Game Name</th>
-      <th>Location</th> 
-      <th>Participants</th>
+      <th scope="col">Game Name</th>
+      <th scope="col">Location</th> 
+      <th scope="col">Participants</th>
     </tr>
     {{#each game}}
       <a>
