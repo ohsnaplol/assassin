@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require("body-parser");
 const exphbs  = require('express-handlebars');
 const app = express();
-var PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -15,7 +15,7 @@ var routes = require("./controllers/assassin_controller.js");
 app.use("/", routes);
 
 // db.sequelize.sync({force: true}).then(function() {
-  app.listen(PORT, function() {
+  app.listen(PORT, ()=> {
     console.log(`Listening on port ${PORT}`)
   })
 // }) 
