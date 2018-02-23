@@ -13,6 +13,10 @@ router.get('/browse', function (request, response) {
   response.render('gamebrowser')
 })
 
+router.get('/create', function (request, response) {
+  response.render('creategame')
+})
+
 router.get('/admin', function (request, response) {
   response.render('admin')
 })
