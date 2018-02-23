@@ -57,7 +57,7 @@ router.post('/api/creategame', function(request, response) {
     var hbsObject = {
       game: dbGame
     }
-    response.render('game', hbsObject)
+    response.redirect(`/game/id/${dbGame.id}`)
   })
 })
 
