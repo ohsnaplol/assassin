@@ -26,7 +26,7 @@ router.get('/create', function (request, response) {
 router.get('/game/id/:id', function (request, response) {
   db.Game.findOne({
     where: {
-      id: req.params.id
+      id: request.params.id
     }
   }).then(function(dbGame) {
     var hbsObject = {
