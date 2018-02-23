@@ -5,3 +5,8 @@ body {
 #loginCard {
 	padding: 20px;
 }
+
+#createCard {
+  padding: 20px;
+  width: 80%
+}
