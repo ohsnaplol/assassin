@@ -1,7 +1,9 @@
 body {
-  background-color: lavenderblush;
+  background-image: url("backgrn1.png");
 }
 
 #loginCard {
-	padding: 20px;
+	background-color: grey;
+	padding: 50px;
 }
+
