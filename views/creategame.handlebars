@@ -1,26 +1,26 @@
 <div class="row">
   <div class="card mx-auto" id="createCard">
     <h2 class="card-title mx-auto">Create Game</h2>
-    <form method="POST">
+    <form method="POST" action="/api/creategame">
       <div class="form-group">
         <label for="inputTitle">Game Title</label>
-        <input type="text" class="form-control" id="inputTitle" placeholder="Title">
+        <input type="text" class="form-control" name="inputTitle">
       </div>
       <div class="form-group">
         <label for="inputLocation">Location</label>
-        <input type="text" class="form-control" id="inputLocation" placeholder="Location">
+        <input type="text" class="form-control" name="inputLocation">
       </div>
       <div class="form-group">
         <label for="inputDescription">Description</label>
-        <input type="text" class="form-control" id="inputDescription" placeholder="Add rules, other descriptors">
+        <textarea name="inputDescription" cols="30" rows="10" class="form-control"></textarea>
       </div>
       <div class="form-group">
         <label for="inputPlayerPassword">Player Password</label>
-        <input type="password" class="form-control" id="inputPlayerPassword" placeholder="Player Password">
+        <input type="password" class="form-control" name="inputPlayerPassword">
       </div>
       <div class="form-group">
         <label for="inputAdminPassword">Admin Password</label>
-        <input type="password" class="form-control" id="inputAdminPassword" placeholder="Admin Password">
+        <input type="password" class="form-control" name="inputAdminPassword">
       </div>
       <button type="submit" class="btn btn-success">Create Game</button>
     </form>
