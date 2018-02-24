@@ -1,9 +1,19 @@
 body {
-  background-image: url("backgrn1.png");
+  background-image: url("background3.png");
 }
 
 #loginCard {
+<<<<<<< HEAD
 	background-color: grey;
 	padding: 50px;
 }
 
+=======
+	padding: 20px;
+}
+
+#createCard {
+  padding: 20px;
+  width: 80%
+}
+>>>>>>> 8f1d2028e30949ff3434b9c3bf9bb36197c765ff

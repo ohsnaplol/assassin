@@ -3,7 +3,9 @@
     <h2>Game Browser</h2>
   </div>
   <div class="col-md-3">
-    <button class="btn btn-primary">Create Game</button>
+    <form action="/create">
+      <button class="btn btn-primary">Create Game</button>
+    </form>
   </div>
 </div>
 
@@ -15,13 +17,14 @@
       <th scope="col">Participants</th>
     </tr>
     {{#each game}}
-    <a>
+    {{!-- this href should link to the id the game corresponds to --}}
+    {{!-- <a href="/game/id/1">  --}}
       <tr>
-        <td>{{game.name}}</tr>
-      <td>{{game.location}}</tr>
-        <td>{{game.participants}}</tr>
-          </tr>
-    </a>
+        <td><a href="/game/id/{{id}}">{{title}}</a></td>
+        <td>{{location}}</td>
+        {{!-- <td>{{game.participants}}</tr> --}}
+      </tr>
+    {{!-- </a> --}}
     {{/each}}
   </table>
 </div>
