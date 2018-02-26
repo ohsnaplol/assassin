@@ -7,23 +7,27 @@ module.exports = function (sequelize, DataTypes) {
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false
     }, 
+    password: {
+      type: DataTypes.STRING
+    },
     weapon: {
       type: DataTypes.STRING,
-      allowNull: false
     },
     target: {
-      type: DataTypes.INTEGER,
-      allowNull: true
+      type: DataTypes.STRING,
+    },
+    isSuccessful: {
+      type: DataTypes.BOOLEAN
+    },
+    isDead: {
+      type: DataTypes.BOOLEAN
     },
     kills: {
       type: DataTypes.STRING,
-      allowNull: true
     },
     killedBy: {
       type: DataTypes.INTEGER,
-      allowNull: true
     }
   })
 
