@@ -38,7 +38,7 @@ module.exports = function(sequelize, DataTypes) {
   })
 
   Game.associate = function(models) {
-    Game.hasOne(models.Player, {
+    Game.hasMany(models.Player, {
       onDelete: 'SET NULL'
     })
   }
