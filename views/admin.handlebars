@@ -1,32 +1,56 @@
-<h2>Assassin Manager</h2>
-<div>
-  <h3>Current Objectives</h3>
-  <table class="table">
-    <tr>
-      <th scope="col">Player</th>
-      <th scope="col">Weapon</th> 
-      <th scope="col">Target</th>
-    </tr>
-    {{#each objective}}
-      <tr>{{player.name}}</tr>
-      <tr>{{player.weapon}}</tr>
-      <tr>{{player.target}}</tr>
-    {{/each}}
-  </table>
+<div class="row">
+  <h2>Assassin Manager</h2>
 </div>
+{{#unless game.isActive}}
+  <div class="row">
+    <form action="PUT" method="/api/startGame/{{game.id}}">
+      <button class="btn btn-primary">Start Game</button>
+    </form>
+  </div>
+  <div class="row">
+    <h3>{{game.title}} Player List</h3>
+  </div>
+  <div class="row">
+    <ul>
+      {{#each player}}
+        <li>{{name}}</li>
+      {{/each}}
+    </ul>
+  </div>
+{{/unless}}
 
-<div>
-  <h3>Kill Feed</h3>
-  <table class="table">
-    <tr>
-      <th scope="col">Player</th>
-      <th scope="col">Weapon</th> 
-      <th scope="col">Target</th>
-    </tr>
-    {{#each events}}
-      <tr>{{player.name}}</tr>
-      <tr>{{player.weapon}}</tr>
-      <tr>{{player.target}}</tr>
-    {{/each}}
-  </table>
-</div>
+{{#if game.isActive}}
+  <div>
+    <h3>Current Objectives</h3>
+    <table class="table">
+      <tr>
+        <th scope="col">Player</th>
+        <th scope="col">Weapon</th> 
+        <th scope="col">Target</th>
+      </tr>
+      {{#each player}}
+        <tr>{{name}}</tr>
+        <tr>{{weapon}}</tr>
+        <tr>{{target}}</tr>
+      {{/each}}
+    </table>
+  </div>
+
+  <div>
+    <h3>Kill Feed</h3>
+    <table class="table">
+      <tr>
+        <th scope="col">Player</th>
+        <th scope="col">Weapon</th> 
+        <th scope="col">Target</th>
+      </tr>
+      {{#each player}}
+        {{#if isDead}}
+          <tr>{{player.name}}</tr>
+          <tr>{{player.weapon}}</tr>
+          <tr>{{player.target}}</tr>
+        {{/if}}
+      {{/each}}
+    </table>
+  </div>
+{{/if}}
