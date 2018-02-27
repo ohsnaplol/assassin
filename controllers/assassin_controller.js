@@ -84,6 +84,7 @@ router.post('/api/:id/authenticatePlayer', function(request,response) {
     if(inputPlayerPass == dbPlayer.password) {
       response.redirect(`/player/${nameInput}/${gameid}`)
     }
+    response.redirect('back')
   })
 })
 
