@@ -121,18 +121,18 @@ router.post('/api/startGame/:id', function(request, response) {
         weapon: weaponList[Math.floor(Math.random() * weaponList.length)]
       }, {
         where: {
-          id: dbPlayer.length,
+          id: dbPlayer[dbPlayer.length-1].id,
           GameId: gameid
         }
       }).then(function(result) {
-        for(var i = 0; i < dbPlayer.length-1; i++) {
+        for(var i = dbPlayer[0].id; i < dbPlayer[dbPlayer.length-1].id; i++) {
           console.log(`i = ${i}\n`)
           db.Player.update({
-            target: dbPlayer[i+1].name,
+            target: dbPlayer[i - dbPlayer[0].id].name, // at i = 9  , i - 9 = 0, i = 10, i - 9 = 1
             weapon: weaponList[Math.floor(Math.random() * weaponList.length)]
           }, {
             where: {
-              id: i+1,
+              id: i,
               GameId: gameid
             }
           })
@@ -169,12 +169,12 @@ router.post('/api/addPlayer/:toGameWithid', function(request, response) {
             password: playerPass,
             GameId: gameid
           }).then(function(result) {
-            response.redirect(`/game/id/${gameid}`)
+            response.redirect(`back`)
           })
         }
       } else {
         console.log('entry already exists')
-        return
+        response.redirect(`back`)
       }
     })
   })
