@@ -286,19 +286,23 @@ router.post('/api/sendStatus/:gameid/:playerid', function(request, response) {
 })
 
 router.post('/api/creategame', function(request, response) {
-  db.Game.create({
-    title: request.body.inputTitle,
-    location: request.body.inputLocation,
-    description: request.body.inputDescription,
-    password: request.body.inputPlayerPassword,
-    adminPassword: request.body.inputAdminPassword,
-    gameIsActive: false
-  }).then(function(dbGame) {
-    var hbsObject = {
-      game: dbGame
-    }
-    response.redirect(`/game/id/${dbGame.id}`)
-  })
+  if (request.body.inputTitle.length < 7) {
+    response.redirect('back')
+  } else {
+    db.Game.create({
+      title: request.body.inputTitle,
+      location: request.body.inputLocation,
+      description: request.body.inputDescription,
+      password: request.body.inputPlayerPassword,
+      adminPassword: request.body.inputAdminPassword,
+      gameIsActive: false
+    }).then(function(dbGame) {
+      var hbsObject = {
+        game: dbGame
+      }
+      response.redirect(`/game/id/${dbGame.id}`)
+    })
+  }
 })
 
 module.exports = router
