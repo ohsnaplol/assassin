@@ -137,9 +137,8 @@ router.post('/api/startGame/:id', function(request, response) {
             }
           })
         }
+        response.redirect(`/admin/${gameid}`)
       })
-      console.log(`dbPlayer.length = ${dbPlayer.length}`)
-      response.redirect(`/admin/${gameid}`)
     })
   })
 })
