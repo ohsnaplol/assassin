@@ -297,9 +297,6 @@ router.post('/api/creategame', function(request, response) {
       adminPassword: request.body.inputAdminPassword,
       gameIsActive: false
     }).then(function(dbGame) {
-      var hbsObject = {
-        game: dbGame
-      }
       response.redirect(`/game/id/${dbGame.id}`)
     })
   }
