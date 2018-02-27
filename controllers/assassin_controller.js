@@ -125,7 +125,8 @@ router.post('/api/startGame/:id', function(request, response) {
           GameId: gameid
         }
       }).then(function(result) {
-        for(var i = 0; i < dbPlayer.length+2; i++) {
+        for(var i = 0; i < dbPlayer.length-1; i++) {
+          console.log(`i = ${i}\n`)
           db.Player.update({
             target: dbPlayer[i+1].name,
             weapon: weaponList[Math.floor(Math.random() * weaponList.length)]
