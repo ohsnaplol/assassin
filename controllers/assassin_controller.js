@@ -98,8 +98,9 @@ router.post('/api/authenticateAdmin/:id', function(request, response) {
   }).then(function(dbGame) {
     if(inputAdminPass == dbGame.adminPassword) {
       response.redirect(`/admin/${dbGame.id}`)
+    } else {
+      response.redirect('back')
     }
-    response.redirect('back')
   })
 })
 
@@ -118,6 +119,11 @@ router.post('/api/startGame/:id', function(request, response) {
         GameId: gameid
       }
     }).then(function(dbPlayer) {
+      // This assumes the id's are chronological and won't skip.
+      // however, ids are global and auto increment, so they wont necessarily
+      // be in order. (ie. 10 ppl join game 1 then 10 ppl join game 2, then 1
+      // person joins game 1, that persons id will be 10 off from the first 10 ppl
+      // who joined game 1)
       db.Player.update({
         target: dbPlayer[0].name,
         weapon: weaponList[Math.floor(Math.random() * weaponList.length)]
