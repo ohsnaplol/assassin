@@ -99,6 +99,7 @@ router.post('/api/authenticateAdmin/:id', function(request, response) {
     if(inputAdminPass == dbGame.adminPassword) {
       response.redirect(`/admin/${dbGame.id}`)
     }
+    response.redirect('back')
   })
 })
 
