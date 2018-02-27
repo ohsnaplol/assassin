@@ -1,0 +1,15 @@
+INSERT INTO PLAYERS(name, password, weapon, target, createdAt, GameID) VALUES ("Giancarlo Correa", "player1", "cucumber", 2, '2018-02-25 13:55:49', '2018-02-25 14:55:50', 1);
+
+INSERT INTO PLAYERS(name, password, weapon, target, createdAt, GameID) VALUES ("Yesenia Coughlin", "player2", "croissiant", 3, '2018-02-23 17:55:49', '2018-02-23 17:55:50', 1);
+
+INSERT INTO PLAYERS(name, password, weapon, target, createdAt, GameID) VALUES ("Juan Perez", "player3", "banana", 4, '2018-02-25 18:55:49', '2018-02-25 18:55:50', 1);
+
+INSERT INTO PLAYERS(name, password, weapon, target, createdAt, GameID) VALUES ("Frank Hernandez", "player4", "yogurt", 5, '2018-02-24 13:55:49', '2018-02-24 14:55:50', 1);
+
+INSERT INTO PLAYERS(name, password, weapon, target, createdAt, GameID) VALUES ("Manuel Santiago", "player5", "napkin", 7, '2018-02-25 16:55:49', '2018-02-25 17:55:50', 1);
+
+INSERT INTO PLAYERS(name, password, weapon, target, createdAt, GameID) VALUES ("Harry Noob", "player6", "smoothie", 1, '2018-02-25 13:30:49', '2018-02-25 14:15:50', 1);
+
+INSERT INTO PLAYERS(name, password, weapon, target, createdAt, GameID) VALUES ("Nelson Rodriguez", "player7", "orange", 8, '2018-02-25 13:55:49', '2018-02-25 14:55:50', 1);
+
+INSERT INTO PLAYERS(name, password, weapon, target, createdAt, GameID) VALUES ("Emilio Hernandez", "player8", "potatoe", 6, '2018-02-26 13:39:49', '2018-02-26 14:44:50', 1);
