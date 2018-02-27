@@ -1,10 +1,10 @@
 <div class="row">
   <h2>Assassin Manager</h2>
 </div>
-{{#unless game.isActive}}
+{{#unless game.gameIsActive}}
   <div class="row">
-    <form action="PUT" method="/api/startGame/{{game.id}}">
-      <button class="btn btn-primary">Start Game</button>
+    <form method="POST" action="/api/startGame/{{game.id}}">
+      <button class="btn btn-primary" type="submit">Start Game</button>
     </form>
   </div>
   <div class="row">
@@ -19,7 +19,7 @@
   </div>
 {{/unless}}
 
-{{#if game.isActive}}
+{{#if game.gameIsActive}}
   <div>
     <h3>Current Objectives</h3>
     <table class="table">
@@ -29,9 +29,11 @@
         <th scope="col">Target</th>
       </tr>
       {{#each player}}
-        <tr>{{name}}</tr>
-        <tr>{{weapon}}</tr>
-        <tr>{{target}}</tr>
+      <tr>
+        <td>{{name}}</td>
+        <td>{{weapon}}</td>
+        <td>{{target}}</td>
+      </tr>
       {{/each}}
     </table>
   </div>
