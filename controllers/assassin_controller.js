@@ -186,6 +186,23 @@ router.post('/api/startGame/:id', function(request, response) {
   })
 })
 
+router.post('/api/deleteGame/:id', function(request, response) {
+  gameid = request.params.id
+  db.Player.destroy({
+    where: {
+      GameId: gameid
+    }
+  }).then(function(dbGame) {
+    db.Game.destroy({
+      where: {
+        id: gameid
+      }
+    }).then(function(dbPlayer) {
+      response.redirect('/browse')
+    })
+  })
+})
+
 router.post('/api/addPlayer/:toGameWithid', function(request, response) {
   var inputName = request.body.name
   var playerPass = request.body.password

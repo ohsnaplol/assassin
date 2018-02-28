@@ -56,3 +56,8 @@
     </table>
   </div>
 {{/if}}
+<div class="row">
+  <form class="form" action="/api/deleteGame/{{game.id}}" method="POST">
+    <button type="submit" class="btn btn-danger">Delete Game</button>
+  </form>
+</div>
