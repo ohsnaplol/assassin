@@ -20,15 +20,34 @@ router.get('/create', function (request, response) {
 })
 
 router.get('/game/id/:id', function (request, response) {
+  var hbsObject = {}
   db.Game.findOne({
     where: {
       id: request.params.id
     }
   }).then(function(dbGame) {
-    var hbsObject = {
-      game: dbGame
-    }
-    response.render('game', hbsObject)
+    hbsObject['game'] = dbGame
+    db.Player.findAll({
+      where: {
+        GameId: request.params.id
+      }
+    }).then(function(dbPlayer) {
+      hbsObject['player'] = dbPlayer
+      // PASTED FROM PLAYER
+      db.Player.findAll({
+        where: {
+          GameId: request.params.id,
+          isDead: false
+        }
+      }).then(function(dbAlive) {
+        if(dbAlive.length == 1) {
+          hbsObject['win'] = true
+        } else {
+          hbsObject['win'] = false
+        }
+        response.render('game', hbsObject)
+      })
+    })
   })
 })
 
@@ -57,16 +76,32 @@ router.get('/admin/:id', function (request, response) {
 router.get('/player/:name/:gameid', function (request, response) {
   var nameInput = request.params.name
   var gameid = request.params.gameid
+  var hbsObject = {}
   db.Player.findOne({
     where: {
       name: nameInput,
       GameId: gameid
     }
   }).then(function(dbPlayer) {
-    hbsObject = {
-      player: dbPlayer
-    }
-    response.render('player', hbsObject)
+    hbsObject['player'] = dbPlayer
+    // check if they are the only one alive (then they win!)
+    db.Player.findAll({
+      where: {
+        GameId: gameid,
+        isDead: false
+      }
+    }).then(function(dbAlive) {
+      console.log(`dbAlive.length = ${dbAlive.length}`)
+      // If there's one person standing and player viewing page's name
+      // is equal to the final person's name, set win to true.
+      // if(dbAlive.length === 1 && (dbPlayer.name === dbAlive[0].name) && dbAlive[0].isSuccessful) { // "THERE IS A WINNER.. SOMEWHERE"
+      if(dbAlive.length == 1 && dbAlive[0].name == dbAlive[0].target && dbAlive[0].target == dbPlayer.name) { // "THERE IS A WINNER.. SOMEWHERE"
+        hbsObject['win'] = true
+      } else {
+        hbsObject['win'] = false
+      }
+      response.render('player', hbsObject)
+    })
   })
 })
 
@@ -213,7 +248,7 @@ router.post('/api/sendStatus/:gameid/:playerid', function(request, response) {
         if(dbTarget.isDead) {
           // if target is dead give assassin their target and weapon
           db.Player.update({
-            target: dbTarget.name,
+            target: dbTarget.target,
             weapon: dbTarget.weapon
           }, {
             where: {
@@ -266,7 +301,8 @@ router.post('/api/sendStatus/:gameid/:playerid', function(request, response) {
           })
           // update who player was killed by
           db.Player.update({
-            killedBy: dbAssassin.name
+            killedBy: dbAssassin.name,
+            isDead: true
           }, {
             where: {
               id: dbPlayer.id,
@@ -301,7 +337,8 @@ router.post('/api/creategame', function(request, response) {
       description: request.body.inputDescription,
       password: request.body.inputPlayerPassword,
       adminPassword: request.body.inputAdminPassword,
-      gameIsActive: false
+      gameIsActive: false,
+      gameiIsComplete: false
     }).then(function(dbGame) {
       response.redirect(`/game/id/${dbGame.id}`)
     })
