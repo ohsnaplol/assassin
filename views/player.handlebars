@@ -1,32 +1,39 @@
 {{#unless player.isDead}}
-  <div class="row">
-    <h3 class="mx-auto">{{player.name}},</h3>
-  </div>
-  <div class="row">
-    <h2 class="mx-auto">KILL</h2>
-  </div>
-  <div class="row">
-    <h3 class="mx-auto">{{player.target}}</h3>
-  </div>
-  <div class="row">
-    <h2 class="mx-auto">WITH</h2>
-  </div>
-  <div class="row">
-    <h3>{{player.weapon}}</h3>
-  </div>
-  {{#if player.isSuccessful}}
-    <p>Congratulations on achieving your goal. 
-      Waiting for target to confirm they are dead before assigning your new target</p>
-  {{/if}}
-  {{#unless player.isSuccessful}}
+  {{#unless win}}
     <div class="row">
-      <form action="/api/sendStatus/{{player.GameId}}/{{player.id}}" method="POST">
-        <button class="btn btn-success" name="success">The deed is done</button>
-        <button class="btn btn-danger" name="fail">I've been killed</button>
-      </form>
+      <h3 class="mx-auto">{{player.name}},</h3>
     </div>
+    <div class="row">
+      <h2 class="mx-auto">KILL</h2>
+    </div>
+    <div class="row">
+      <h3 class="mx-auto">{{player.target}}</h3>
+    </div>
+    <div class="row">
+      <h2 class="mx-auto">WITH</h2>
+    </div>
+    <div class="row">
+      <h3>{{player.weapon}}</h3>
+    </div>
+    {{#if player.isSuccessful}}
+      <p>Congratulations on achieving your goal. 
+        Waiting for target to confirm they are dead before assigning your new target</p>
+    {{/if}}
+    {{#unless player.isSuccessful}}
+      <div class="row">
+        <form action="/api/sendStatus/{{player.GameId}}/{{player.id}}" method="POST">
+          <button class="btn btn-success" name="success">The deed is done</button>
+          <button class="btn btn-danger" name="fail">I've been killed</button>
+        </form>
+      </div>
+      {{/unless}}
   {{/unless}}
 {{/unless}}
+{{#if win}}
+  <div class="row">
+    <h1>YOU WIN!</h1>
+  </div>
+{{/if}}
 {{#if player.isDead}}
   <h2>You are dead!</h2>
   <p>Check the game page periodically to see the results when the game is over.</p>
