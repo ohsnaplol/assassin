@@ -18,16 +18,18 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
     },
     isSuccessful: {
-      type: DataTypes.BOOLEAN
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     },
     isDead: {
-      type: DataTypes.BOOLEAN
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     },
     kills: {
       type: DataTypes.STRING,
     },
     killedBy: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     }
   })
 
