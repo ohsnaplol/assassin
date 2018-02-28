@@ -14,38 +14,40 @@
   <p>{{game.description}}</p>
 </div>
 {{#if win}}
-  {{#each player}}
-    {{#unless isDead}}
-    <div class="row">
-      <h2 class="mx-auto">THE WINNER IS</h2>
-    </div>
-    <div class="row">
-      <h2 class="mx-auto">{{name}}</h2>
-    </div>
-    {{/unless}}
-  {{/each}}
+  {{#if game.gameIsActive}}
+    {{#each player}}
+      {{#unless isDead}}
+      <div class="row">
+        <h2 class="mx-auto">THE WINNER IS</h2>
+      </div>
+      <div class="row">
+        <h2 class="mx-auto">{{name}}</h2>
+      </div>
+      {{/unless}}
+    {{/each}}
 
-  <div class="row">
-    <h3>Kill Feed</h3>
-    <table class="table">
-      <tr>
-        <th scope="col">Player</th>
-        <th scope="col">Weapon</th> 
-        <th scope="col">Target</th>
-        <th scope="col">At</th>
-      </tr>
-      {{#each player}}
-        {{#if isDead}}
+    <div class="row">
+      <h3>Kill Feed</h3>
+      <table class="table">
         <tr>
-          <td>{{killedBy}}</td>
-          <td>{{weapon}}</td>
-          <td>{{name}}</td>
-          <td>{{updatedAt}}</td>
+          <th scope="col">Player</th>
+          <th scope="col">Weapon</th> 
+          <th scope="col">Target</th>
+          <th scope="col">At</th>
         </tr>
-        {{/if}}
-      {{/each}}
-    </table>
-  </div>
+        {{#each player}}
+          {{#if isDead}}
+          <tr>
+            <td>{{killedBy}}</td>
+            <td>{{weapon}}</td>
+            <td>{{name}}</td>
+            <td>{{updatedAt}}</td>
+          </tr>
+          {{/if}}
+        {{/each}}
+      </table>
+    </div>
+  {{/if}}
 {{/if}}
 <div class="row">
   <p>Created at: {{game.createdAt}}</p>
