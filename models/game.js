@@ -5,9 +5,6 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
-    adminId: {
-      type: DataTypes.INTEGER
-    },
     title: {
       type: DataTypes.STRING,
       allowNull: false,
