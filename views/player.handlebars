@@ -16,20 +16,18 @@
       <h3 class="mx-auto">{{player.weapon}}</h3>
     </div>
     <div class="row">
-      <img src="/images/{{player.weapon}}.png" alt="{{player.weapon}} drawing">
+      <img class="mx-auto d-block" src="/images/{{player.weapon}}.png" alt="{{player.weapon}} drawing">
     </div>
     {{#if player.isSuccessful}}
       <p>Congratulations on achieving your goal. 
         Waiting for target to confirm they are dead before assigning your new target</p>
     {{/if}}
     {{#unless player.isSuccessful}}
-      <div class="row">
-        <form action="/api/sendStatus/{{player.GameId}}/{{player.id}}" method="POST">
-          <button class="btn btn-success" name="success">The deed is done</button>
-          <button class="btn btn-danger" name="fail">I've been killed</button>
-        </form>
-      </div>
-      {{/unless}}
+      <form class="form-inline justify-content-center"action="/api/sendStatus/{{player.GameId}}/{{player.id}}" method="POST">
+        <button class="btn btn-success" name="success">The deed is done</button>
+        <button class="btn btn-danger" name="fail">I've been killed</button>
+      </form>
+    {{/unless}}
   {{/unless}}
 {{/unless}}
 {{#if win}}
