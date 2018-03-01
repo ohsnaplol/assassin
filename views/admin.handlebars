@@ -46,12 +46,14 @@
       <tr>
         <th scope="col">Player</th>
         <th scope="col">Killed By</th>
+        <th scope="col">At</th>
       </tr>
       {{#each player}}
         <tr>
           {{#if isDead}}
             <td>{{name}}</td>
             <td>{{killedBy}}</td>
+            <td>{{updatedAt}}</td>
           {{/if}}
         </tr>
       {{/each}}
