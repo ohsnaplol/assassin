@@ -141,7 +141,7 @@ router.post('/api/authenticateAdmin/:id', function(request, response) {
 
 router.post('/api/startGame/:id', function(request, response) {
   var gameid = request.params.id
-  var weaponList = ['cucumber', 'croissant', 'banana', 'yogurt', 'napkin', 'smoothie', 'orange', 'potato']
+  var weaponList = ['balloon', 'cake', 'croissant', 'friedbutter', 'jarglitter', 'lego', 'unicorn']
   db.Game.update({
     gameIsActive: true
   }, {
