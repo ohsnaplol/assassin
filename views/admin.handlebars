@@ -29,11 +29,13 @@
         <th scope="col">Target</th>
       </tr>
       {{#each player}}
-      <tr>
-        <td>{{name}}</td>
-        <td>{{weapon}}</td>
-        <td>{{target}}</td>
-      </tr>
+        {{#unless isDead}}
+          <tr>
+            <td>{{name}}</td>
+            <td>{{weapon}}</td>
+            <td>{{target}}</td>
+          </tr>
+        {{/unless}}
       {{/each}}
     </table>
   </div>
@@ -43,15 +45,15 @@
     <table class="table">
       <tr>
         <th scope="col">Player</th>
-        <th scope="col">Weapon</th> 
-        <th scope="col">Target</th>
+        <th scope="col">Killed By</th>
       </tr>
       {{#each player}}
-        {{#if isDead}}
-          <tr>{{player.name}}</tr>
-          <tr>{{player.weapon}}</tr>
-          <tr>{{player.target}}</tr>
-        {{/if}}
+        <tr>
+          {{#if isDead}}
+            <td>{{name}}</td>
+            <td>{{killedBy}}</td>
+          {{/if}}
+        </tr>
       {{/each}}
     </table>
   </div>
